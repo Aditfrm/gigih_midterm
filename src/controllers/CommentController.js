@@ -8,7 +8,7 @@ exports.getVideoComments = async (req, res) => {
     const comments = await Comment.find({ VideoID: videoId });
     res.json(comments);
   } catch (err) {
-    res.status(500).json({ message: "Gagal memuat komentar" });
+    res.status(500).json({ message: "error fetching comment" });
     console.log(err);
   }
 };
@@ -26,7 +26,7 @@ exports.createComment = async (req, res) => {
 
     res.json(newComment);
   } catch (err) {
-    res.status(500).json({ message: "Gagal Membuat komentar" });
+    res.status(500).json({ message: "error creating comment" });
     console.log(err);
   }
 };
