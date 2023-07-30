@@ -38,7 +38,7 @@ This collection contains data about products. The schema is as follows:
 ```json
 {
   "VideoID": "String",
-  "ProductID": string,
+  "ProductID": "string",
   "LinkProduct": "String",
   "Title": "String",
   "Price": "Number"
