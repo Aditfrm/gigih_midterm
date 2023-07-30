@@ -14,7 +14,69 @@ This repository contains the backend implementation of the Tokopedia Play Clone,
 
 ## Database Structure
 
+The MongoDB database used for this project contains three collections: `Videos`, `Products`, and `Comments`.
+
+![alt text](./images/Diagram.png)
+
+### Videos
+
+This collection contains data about videos. The schema is as follows:
+
+```json
+{
+  "VideoID": "uuid",
+  "TitleVideo": "string",
+  "UrlImageThumbnail": "string",
+  "LinkVideo": "string"
+}
+```
+
+### Products
+
+This collection contains data about products. The schema is as follows:
+
+```json
+{
+  "VideoID": "String",
+  "ProductID": string,
+  "LinkProduct": "String",
+  "Title": "String",
+  "Price": "Number"
+}
+```
+
+### Comments
+
+This collection contains data about comments. The schema is as follows:
+
+```json
+{
+  "VideoID": "String",
+  "Username": { "type: String, required: true" },
+  "Comment": { "type: String, required: true" },
+  "Timestamp": { "type: Date, default: Date.now" }
+}
+```
+
 ## API Structure
+
+#### API Structure Design :
+
+on this structure API, I use folder structure :
+
+**Data Acces :**
+
+- Models :
+- Controller :
+- Routes :
+
+![alt text](./images/Flow.png)
+
+The backend follows a RESTful API design, using Express.js to handle routes and controllers to handle the logic for each endpoint.
+
+- The `VideosController.js` handles video-related API endpoints.
+- The `ProductController.js` handles product-related API endpoints.
+- The `CommentController.js` handles comment-related API endpoints.
 
 ## List API request and response
 
@@ -38,10 +100,10 @@ Returns all users in the system.
 [
   {
     "_id": "64c3c7713176cca275313bcd",
-    "VideoID": "sdasda",
+    "VideoID": "97fcea2f-84d3-4b14-9d20-a5e90ba4d23e",
     "Title": "Baju Oversize",
-    "UrlImageThumb": "asdada",
-    "UrlVideo": "sdlaksd"
+    "UrlImageThumb": "https://images.tokopedia.net/img/cache/900/VqbcmM/2022/12/24/9eb0fb35-8d2c-4a8e-88f8-e8934eb6edf8.jpg",
+    "UrlVideo": "https://youtu.be/kRg8PXQVpbw"
   }
 ]
 ```
@@ -61,9 +123,9 @@ Create new videos
 - **Data Params**
   ```json
   {
-    "titleVideo" : string,
-    "urlImageThumbnail" : string,
-    "urlVideo" : string
+    "titleVideo": "string",
+    "urlImageThumbnail": "string",
+    "urlVideo": "string"
   }
   ```
 - **Headers**  
@@ -74,11 +136,11 @@ Create new videos
 
 ```json
 {
-  "VideoID": "8c997394-0b4b-4364-9e42-cc7fba77caed",
-  "TitleVideo": "Kaos",
-  "UrlImageThumbnail": "http.com",
-  "UrlVideo": "link",
-  "_id": "64c3f38b7df654dc65407a06",
+  "VideoID": "1bfa09b5-95ef-409b-83a8-51f1cbae4c05",
+  "TitleVideo": "Trust Denim",
+  "UrlImageThumbnail": "https://images.tokopedia.net/img/cache/900/VqbcmM/2023/7/26/eeaa5f7b-d8cb-449d-a00d-86b5760f038e.jpg",
+  "UrlVideo": "https://youtu.be/9S628EBdizY",
+  "_id": "64c4f02dac4157c70f56e9fe",
   "__v": 0
 }
 ```
@@ -176,12 +238,8 @@ Create Comment in the specified video.
 
 ```json
 {
-  "VideoID": "2",
-  "Username": "adit",
-  "Comment": "barangnya lengkap banget",
-  "_id": "64c3f23a7df654dc65407a04",
-  "Timestamp": "2023-07-28T16:52:10.583Z",
-  "__v": 0
+  "username": "adit",
+  "comment": "barangnya lengkap banget"
 }
 ```
 
